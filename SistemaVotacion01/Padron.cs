@@ -19,15 +19,15 @@ namespace SistemaVotacion01
         public string? CodigoAcceso { get; set; }
 
 
-        [Required, ForeignKey(nameof(Proceso))]
-        public int IdProceso { get; set; }
+        [Required, ForeignKey(nameof(ProcesoElectoral))]
+        public int ProcesoElectoralId { get; set; }
 
 
         [Required, ForeignKey(nameof(Usuarios))]
-        public int IdUsuario { get; set; }
+        public int UsuarioId { get; set; }
 
 
-        public ProcesoElectoral? Proceso { get; set; }
+        public ProcesoElectoral? ProcesosElectorales { get; set; }
 
         public Usuario? Usuarios { get; set; }
 

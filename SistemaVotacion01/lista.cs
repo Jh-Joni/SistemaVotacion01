@@ -14,11 +14,11 @@ namespace SistemaVotacion01
         public string NombreLista { get; set; }
        
 
-        public int IdProceso { get; set; }
-        public ProcesoElectoral? ProcesoElectoral { get; set; }
-         public int IdPartido { get; set; }
+        public int ProcesoElectoralId { get; set; }
+        public ProcesoElectoral? ProcesosElectorales { get; set; }
+         public int PartidoPoliticoId { get; set; }
         public PartidoPolitico? PartidosPoliticos { get; set; }
-        public int IdCandidato { get; set; }
-        public Candidato ?Candidato { get; set; }
+        public int CandidatoId { get; set; }
+        public Candidato ?Candidatos { get; set; }
     }
 }

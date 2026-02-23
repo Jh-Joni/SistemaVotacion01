@@ -12,10 +12,10 @@ namespace SistemaVotacion01
         [Key]
         public int Id { get; set; }
 
-        public int IdCandidato { get; set; }
+        public int CandidatoId { get; set; }
 
-        public int IdProceso { get; set; }
-            public Candidato? Candidato { get; set; }
+        public int ProcesoElectoralId { get; set; }
+            public Candidato? Candidatos { get; set; }
             public ProcesoElectoral? ProcesosElectorales { get; set; }
 
         public DateTime FechaVoto { get; set; } = DateTime.Now;
