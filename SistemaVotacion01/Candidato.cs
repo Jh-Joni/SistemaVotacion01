@@ -15,7 +15,7 @@ namespace SistemaVotacion01
         public string FotoUrl { get; set; }
      
 
-        public int IdProceso { get; set; }
+        public int ProcesoElectoralId  { get; set; }
             public ProcesoElectoral? ProcesosElectorales { get; set; }
         public List <Voto>? Votos { get; set; }
 

@@ -15,7 +15,7 @@ namespace SistemaVotacion01
         public string NOmbrePartido { get; set; }
         [Required]
         public string simboloUrl { get; set; }
-         public int IdProceso { get; set; }
+         public int ProcesoElectoralId { get; set; }
 
         public List<lista>? Listas { get; set; }
     }

@@ -15,7 +15,7 @@ namespace SistemaVotacion01
             public DateTime FechaInicio { get; set; }
             public DateTime FechaFin { get; set; }
 
-           public List<PartidoPolitico>? Partidos { get; set; }
+           public List<PartidoPolitico>? PartidoPoliticos { get; set; }
             public List<Candidato>? Candidatos { get; set; }
             public List<lista>? Listas { get; set; }
         public List<Voto>? Votos { get; set; }
