@@ -91,7 +91,7 @@ namespace SistemaVotacion.API.Migrations
                     b.Property<int>("ProcesoElectoralId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("simboloUrl")
+                    b.Property<string>("SimboloUrl")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -154,6 +154,9 @@ namespace SistemaVotacion.API.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("Cedula")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Contraseña")
                         .IsRequired()
                         .HasColumnType("text");
@@ -167,9 +170,6 @@ namespace SistemaVotacion.API.Migrations
                         .HasColumnType("text");
 
                     b.Property<int>("RolId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("cedula")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");

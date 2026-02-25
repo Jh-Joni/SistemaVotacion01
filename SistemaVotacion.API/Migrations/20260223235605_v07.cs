@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace SistemaVotacion.API.Migrations
 {
     /// <inheritdoc />
-    public partial class v2 : Migration
+    public partial class v07 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -68,7 +68,7 @@ namespace SistemaVotacion.API.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     NOmbrePartido = table.Column<string>(type: "text", nullable: false),
-                    simboloUrl = table.Column<string>(type: "text", nullable: false),
+                    SimboloUrl = table.Column<string>(type: "text", nullable: false),
                     ProcesoElectoralId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
@@ -92,7 +92,7 @@ namespace SistemaVotacion.API.Migrations
                     Apellido = table.Column<string>(type: "text", nullable: false),
                     Correo = table.Column<string>(type: "text", nullable: false),
                     Contraseña = table.Column<string>(type: "text", nullable: false),
-                    cedula = table.Column<int>(type: "integer", nullable: false),
+                    Cedula = table.Column<int>(type: "integer", nullable: false),
                     RolId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>

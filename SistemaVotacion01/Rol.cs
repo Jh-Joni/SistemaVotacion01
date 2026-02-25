@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace SistemaVotacion01
@@ -13,8 +14,7 @@ namespace SistemaVotacion01
         public int Id { get; set; }
         public string NombreRol { get; set; }
 
+        [JsonIgnore]
         public List<Usuario>? Usuarios { get; set; }
-
-
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace SistemaVotacion01
@@ -18,18 +19,18 @@ namespace SistemaVotacion01
 
         public string? CodigoAcceso { get; set; }
 
-
-        [Required, ForeignKey(nameof(ProcesoElectoral))]
+        [Required]
         public int ProcesoElectoralId { get; set; }
 
-
-        [Required, ForeignKey(nameof(Usuarios))]
+        [Required]
         public int UsuarioId { get; set; }
 
-
+        [JsonIgnore]
+        [ForeignKey(nameof(ProcesoElectoralId))]
         public ProcesoElectoral? ProcesosElectorales { get; set; }
 
+        [JsonIgnore]
+        [ForeignKey(nameof(UsuarioId))]
         public Usuario? Usuarios { get; set; }
-
     }
 }

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace SistemaVotacion01
@@ -13,11 +15,14 @@ namespace SistemaVotacion01
         public int Id { get; set; }
         public string NombreCompleto { get; set; }
         public string FotoUrl { get; set; }
-     
 
-        public int ProcesoElectoralId  { get; set; }
-            public ProcesoElectoral? ProcesosElectorales { get; set; }
-        public List <Voto>? Votos { get; set; }
+        public int ProcesoElectoralId { get; set; }
 
+        [JsonIgnore]
+        [ForeignKey(nameof(ProcesoElectoralId))]
+        public ProcesoElectoral? ProcesosElectorales { get; set; }
+
+        [JsonIgnore]
+        public List<Voto>? Votos { get; set; }
     }
 }
