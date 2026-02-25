@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SistemaVotacion.API.DTOs;
 using SistemaVotacion01;
 
 namespace SistemaVotacion.API.Controllers
@@ -77,12 +78,46 @@ namespace SistemaVotacion.API.Controllers
         [HttpPost]
         public async Task<ActionResult<Usuario>> PostUsuario(Usuario usuario)
         {
+            // Hashear la contraseña antes de guardarla en la base de datos
+            usuario.Contraseña = BCrypt.Net.BCrypt.HashPassword(usuario.Contraseña);
             _context.Usuarios.Add(usuario);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUsuario", new { id = usuario.Id }, usuario);
+            return Ok(usuario);
         }
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(UsuarioLoginDto dto)
+        {
+            var usuario = await _context.Usuarios
+                .FirstOrDefaultAsync(u => u.Correo == dto.Email);
 
+            if (usuario == null)
+                return Unauthorized("Usuario no existe");
+
+            bool valido = BCrypt.Net.BCrypt.Verify(dto.Password, usuario.Contraseña);
+
+            if (!valido)
+                return Unauthorized("Contraseña incorrecta");
+
+            return Ok("Login correcto");
+        }
+        [HttpPost("HashExistentes")]
+        public async Task<IActionResult> HashExistentes()
+        {
+            var usuarios = await _context.Usuarios.ToListAsync();
+
+            foreach (var u in usuarios)
+            {
+                if (!u.Contraseña.StartsWith("$2"))
+                {
+                    u.Contraseña = BCrypt.Net.BCrypt.HashPassword(u.Contraseña);
+                }
+            }
+
+            await _context.SaveChangesAsync();
+
+            return Ok("Actualizados");
+        }
         // DELETE: api/Usuarios/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUsuario(int id)

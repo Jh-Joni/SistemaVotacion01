@@ -14,12 +14,6 @@ namespace SistemaVotacion.MVC.Controllers
             return View(lista);
         }
 
-        // GET: RolesController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
        // POST: RolesController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -50,27 +44,6 @@ namespace SistemaVotacion.MVC.Controllers
         {
             Crud<Rol>.Update(id, rol);
             return RedirectToAction(nameof(Index));
-        }
-
-        // GET: RolesController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: RolesController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }
