@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace SistemaVotacion01
@@ -12,14 +14,22 @@ namespace SistemaVotacion01
         [Key]
         public int Id { get; set; }
         public string NombreProceso { get; set; }
-            public DateTime FechaInicio { get; set; }
-            public DateTime FechaFin { get; set; }
+        public DateTime FechaInicio { get; set; }
+        public DateTime FechaFin { get; set; }
 
-           public List<PartidoPolitico>? PartidoPoliticos { get; set; }
-            public List<Candidato>? Candidatos { get; set; }
-            public List<lista>? Listas { get; set; }
+        [JsonIgnore]
+        public List<PartidoPolitico>? PartidoPoliticos { get; set; }
+
+        [JsonIgnore]
+        public List<Candidato>? Candidatos { get; set; }
+
+        [JsonIgnore]
+        public List<lista>? Listas { get; set; }
+
+        [JsonIgnore]
         public List<Voto>? Votos { get; set; }
-        public List<Padron>? Padrones { get; set; }
 
+        [JsonIgnore]
+        public List<Padron>? Padrones { get; set; }
     }
 }

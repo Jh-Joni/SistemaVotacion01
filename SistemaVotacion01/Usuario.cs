@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace SistemaVotacion01
 {
@@ -10,13 +11,14 @@ namespace SistemaVotacion01
         public string Apellido { get; set; }
         public string Correo { get; set; }
         public string Contraseña { get; set; }
-        public int cedula { get; set; }
+        public int Cedula { get; set; }
 
-         public int RolId { get; set; }
-            public Rol? Rol { get; set; }
-      
-         public List<Padron>? Padrones { get; set; }
+        public int RolId { get; set; }
 
+        [JsonIgnore]
+        public Rol? Rol { get; set; }
 
+        [JsonIgnore]
+        public List<Padron>? Padrones { get; set; }
     }
 }

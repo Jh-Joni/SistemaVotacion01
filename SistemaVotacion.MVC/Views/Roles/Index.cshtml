@@ -1,0 +1,46 @@
+﻿@model IEnumerable<SistemaVotacion01.Rol>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h2>Lista de Roles</h2>
+<table class=" table table-bordered">
+    <thead>
+        <tr>
+            <th> Id</th>
+            <th>NOMBRE ROL</th>
+           
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.NombreRol</td>
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-id="@item.Id"
+                       class="btn btn-warning btn-sm">
+                        Editar
+                    </a>
+
+                </td>
+            </tr>
+           
+        }
+
+    </tbody>
+
+</table>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label>Nombre Rol</label>
+        <input name="NombreRol" class="form-control" required />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Guardar</button>
+   
+</form>

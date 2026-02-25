@@ -1,9 +1,13 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using SistemaVotacion.ApiConsumer;
 using SistemaVotacion.MVC.Data;
+using SistemaVotacion01;
 
 var builder = WebApplication.CreateBuilder(args);
 
+Crud<Rol>.EndPoint = "http://localhost:5208/api/Roles";
+Crud<Usuario>.EndPoint = "http://localhost:5208/api/Usuarios";
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>

@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace SistemaVotacion.API.Migrations
 {
     [DbContext(typeof(SistemaVotacionAPIContext))]
-    [Migration("20260223223318_v2")]
-    partial class v2
+    [Migration("20260223235605_v07")]
+    partial class v07
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -94,7 +94,7 @@ namespace SistemaVotacion.API.Migrations
                     b.Property<int>("ProcesoElectoralId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("simboloUrl")
+                    b.Property<string>("SimboloUrl")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -157,6 +157,9 @@ namespace SistemaVotacion.API.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("Cedula")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Contraseña")
                         .IsRequired()
                         .HasColumnType("text");
@@ -170,9 +173,6 @@ namespace SistemaVotacion.API.Migrations
                         .HasColumnType("text");
 
                     b.Property<int>("RolId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("cedula")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
